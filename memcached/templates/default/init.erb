@@ -1,0 +1,46 @@
+#!/bin/bash
+#
+# memcached
+#
+# chkconfig: 345 80 20
+# description: memcached
+
+TARGET=memcached
+DST_BIN=/usr/local/bin/${TARGET}
+EXEC_USER=memcached
+CACHE_SIZE=64
+
+start()
+{
+  echo -n "Starting ${TARGET}: "
+  ${DST_BIN} -d -u ${EXEC_USER} -m ${CACHE_SIZE}
+  echo
+}
+
+stop()
+{
+  echo -n "Shutting down ${TARGET}: "
+  killall ${TARGET}
+  echo
+}
+
+case "$1" in
+  start)
+    start
+    ;;
+
+  stop)
+    stop
+    ;;
+
+  restart)
+    stop
+    start
+    ;;
+
+  *)
+    echo "Usage: `basename $0` {start|stop|restart}" >&2
+    exit 1
+esac
+
+exit 0

@@ -1,0 +1,36 @@
+default['packs']['packages'] = %w{
+	vim-enhanced
+	libtool
+	wget
+	gcc
+	libcurl
+	libcurl-devel
+	zlib-devel
+	perl-devel
+	gettext
+	openssl
+	libevent
+	libevent-devel
+	telnet
+	re2c
+	libmcrypt-devel
+	libxml2-devel
+	bison
+	bison-devel
+	libjpeg-devel
+	libpng-devel
+	readline-devel
+	libtidy-devel
+	libxslt-devel
+	enchant-devel
+	libXpm-devel
+	freetype-devel
+	t1lib-devel
+	gmp-devel
+	libc-client-devel
+	libicu-devel
+	oniguruma-devel
+	net-snmp
+	net-snmp-devel
+	bzip2-devel
+}
