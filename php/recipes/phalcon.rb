@@ -6,7 +6,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-dir_name = node['php']['env_root'] + node['php']['version'] + '/etc/conf.d/'
+dir_name = node['php']['env_root'] + '/versions/' + node['php']['version'] + '/etc/conf.d/'
 
 #gitからphalcon取ってきて
 git "/tmp/cphalcon" do

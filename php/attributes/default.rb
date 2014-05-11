@@ -1,2 +1,2 @@
 default['php']['version'] = '5.5.11'
-default['php']['env_root'] = '/root/.phpenv/versions/'
+default['php']['env_root'] = '/usr/local/phpenv'

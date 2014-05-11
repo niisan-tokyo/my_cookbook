@@ -1,8 +1,8 @@
 
 
-dir_name = node['php']['env_root'] + node['php']['version'] + '/etc/conf.d/'
+dir_name = node['php']['env_root'] + '/versions/' + node['php']['version'] + '/etc/conf.d/'
 
-bash 'install pecl memcached' do
+bash 'install pecl memcache' do
   cwd '/tmp'
   not_if 'php -i | grep memcache'
   code <<-EOS

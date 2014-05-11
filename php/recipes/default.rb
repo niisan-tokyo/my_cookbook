@@ -10,26 +10,25 @@
 #
 
 version = node['php']['version']
-dir     = node['php']['env_root']
+dir_name     = node['php']['env_root']
 
 #phpenvインストール
 bash 'install_phpenv' do
-  not_if 'ls #{dir}'
+  not_if "ls #{dir_name}"
   user 'root'
   cwd '/tmp'
   code <<-EOH
-    export HOME=/root
-    mkdir $HOME/.phpenv
+    export PHPENV_ROOT=#{dir_name}
     wget https://raw.github.com/CHH/phpenv/master/bin/phpenv-install.sh
     bash phpenv-install.sh
-    echo 'export PATH="${dir}bin:$PATH"' >> $HOME/.bashrc
+    echo 'export PATH="#{dir_name}/bin:$PATH"' >> $HOME/.bashrc
     echo 'eval "$(phpenv init -)"' >> $HOME/.bashrc
-    mkdir #{dir}plugins
+    mkdir #{dir_name}/plugins
   EOH
 end
 
 #php-build をプラグインとしてインストール
-git '#{dir}plugins/php-build' do
+git "#{dir_name}/plugins/php-build" do
   repository 'git://github.com/CHH/php-build.git'
   reference 'master'
   action :sync
@@ -37,7 +36,7 @@ git '#{dir}plugins/php-build' do
 end
 
 #ビルド時のconfigureオプション
-cookbook_file "#{dir}plugins/php-build/share/php-build/default_configure_options" do
+cookbook_file "#{dir_name}/plugins/php-build/share/php-build/default_configure_options" do
   not_if "php -v | grep #{version}"
   owner 'root'
   group 'root'

@@ -9,7 +9,7 @@
 # phpenv内でのphp-fpmを起動させる
 #
 
-php_path = node['php-fpm']['php_path'] + node['php']['version'] + '/'
+php_path = node['php']['env_root'] + '/versions/' + node['php']['version'] + '/'
 php_fpm_conf_path = php_path + node['php-fpm']['php_fpm_conf_name']
 php_fpm_bin_path = php_path + node['php-fpm']['php_fpm_bin_path']
 
