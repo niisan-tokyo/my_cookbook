@@ -22,7 +22,9 @@ bash 'install_phpenv' do
     wget https://raw.github.com/CHH/phpenv/master/bin/phpenv-install.sh
     bash phpenv-install.sh
     echo 'export PATH="#{dir_name}/bin:$PATH"' >> $HOME/.bashrc
+    echo 'export PATH="#{dir_name}/bin:$PATH"' >> /home/vagrant/.bashrc
     echo 'eval "$(phpenv init -)"' >> $HOME/.bashrc
+    echo 'eval "$(phpenv init -)"' >> /home/vagrant/.bashrc
     mkdir #{dir_name}/plugins
   EOH
 end
