@@ -37,6 +37,12 @@ template "/etc/nginx/conf.d/default.conf" do
   })
 end
 
+#ファイアウォールをとめとく
+service "iptables" do
+	action [:stop, :disable]
+end
+
+
 service 'php-fpm' do
   only_if 'ls /etc/init.d/php-fpm'
   action [ :enable, :restart ]
