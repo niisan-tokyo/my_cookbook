@@ -20,8 +20,6 @@ end
 bash "install cphalcon" do
   cwd "/tmp/cphalcon/build"
   code <<-EOF
-  export PATH="$HOME/.phpenv/bin:$PATH"
-  eval "$(phpenv init -)"
   cd /tmp/cphalcon/build
   ./install
   echo "extension=phalcon.so" > #{dir_name}phalcon.ini
