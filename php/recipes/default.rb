@@ -50,9 +50,10 @@ end
 bash 'install_php' do
   not_if "php -v | grep #{version}"
   code <<-EOL
-    source /root/.bashrc
+    source ~/.bashrc
     phpenv install #{version}
     phpenv rehash
     phpenv global #{version}
+    source ~/.bashrc
   EOL
 end
